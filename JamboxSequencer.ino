@@ -4,14 +4,14 @@
 //  5th knob raises and lowers tempo
 //  4th knob controls volume
 //  3rd knob shifts toward a square wav -- go retro!
-//  2nd knob adjsuts pitch, makes things weird.
+//  2nd knob adjusts pitch, makes things weird.
 //  1st knob does nothing.
 //
 // This was originally adapted from the Jambox instructable at 
 // https://www.instructables.com/id/HACKERBOX-0028-JamBox/, however
 // it now bears little resemblance to the original.  This fixes a 
 // bunch of issues present in the original example, which would just 
-// produce varrying samples of garbled audio from the PCM chip
+// produce varying samples of garbled audio from the PCM chip
 //  (*) The DAC expects its samples to be LSB
 //  (*) The pre-buffered waveforms introduced weird noise at the
 //      end of each cycle because they didn't end exactly at the
@@ -37,7 +37,7 @@
 #define NOTE_COUNT 8
 
 // The sample rate we send to the I2C bus.  Higher numbers may make it 
-// hard for the arduino to keep up and lead to distortion.  Since we
+// hard for the ESP32 to keep up and lead to distortion.  Since we
 // only send clean sin() waves the low sample rate isn't very 
 // important.
 #define SAMPLE_RATE_HZ  8000
@@ -70,7 +70,7 @@
 static const int buttonPins[NOTE_COUNT] = {4, 5, 16, 17, 18, 19, 21, 23};
 static const int potentiometerPins[POTENTIOMETER_COUNT] = {32, 33, 34, 35, 36};
 
-// The frequency in Hz for each note.  This is C4, D4, E4....C5 with C5 at 444Hz. 
+// The frequency in Hz for each note.  This is C4, D4, E4..C5 with C5 at 444Hz. 
 static const float noteFrequencies[NOTE_COUNT] = {264, 296.33, 332.62, 352.4, 395.56, 444, 498.37, 528.01};
 
 static const i2s_config_t I2S_CONFIG = {
